@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink} from "react-router-dom";
+import './Navbar.css'
 
 
 import AuthService from "../../services/auth-service";
@@ -28,17 +29,14 @@ const Navbar = (props) => {
   if (loggedInUser) {
     return (
       <nav >
-         <ul>
-           <li>
+            <div className="logout-btn">
             <NavLink to="/" activeStyle={{color: "blue"}} exact>
-              <button onClick={logoutUser}>Logout</button>
+              <button className="btn-all" onClick={logoutUser}>Logout</button>
             </NavLink>
+            </div>
             <NavLink to="/products" activeStyle={{color: "blue"}} exact>
-              <button>List Of Products</button>
+              <button className="btn-all">List Of Products</button>
             </NavLink>
-            
-          </li>
-        </ul>
       </nav>
     );
   } else {

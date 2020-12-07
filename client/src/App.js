@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar'
 import ProductList from './components/Products/ProductList'
 import ProductDetails from './components/Products/ProductDetails'
 import Notfound from './components/Notfound'
+import ProtectedRoute from './components/Auth/ProtectedRoute'
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -39,16 +40,19 @@ function App() {
     
   return (
     <section className="App">
-        <h1>Welcome User {loggedInUser.username}</h1>
+        <h1 className="welcome">Welcome User {loggedInUser.username}</h1>
         <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
-        <Route 
-          getUser={loggedInUser}
-          exact path="/products/:id"
-          component ={ProductDetails}
-          />
         <Switch>
-          <Route exact path="/products"
-          component ={ProductList}/>
+          <ProtectedRoute 
+            user={loggedInUser}
+            exact path="/products/:id"
+            component ={ProductDetails}
+            />
+        
+            
+            <ProtectedRoute exact path="/products"
+            user={loggedInUser}
+            component ={ProductList}/>
           
           <Route path="/login" component={() =>(<Redirect to="/products"/>)}/>
           <Route component={Notfound}/> 
@@ -71,6 +75,16 @@ function App() {
         path="/login"
         render={() => <Login getUser={getLoggedInUser} />}
       />
+
+      <ProtectedRoute 
+        user={loggedInUser}
+        exact path="/products/:id"
+        component ={ProductDetails}
+        />
+           
+        <ProtectedRoute exact path="/products"
+        user={loggedInUser}
+        component ={ProductList}/>
 
     </Switch>  
   </section>

@@ -36,7 +36,7 @@ const EditProductForm = (props) => {
         props.getTheProduct();
       })
       .catch((error) => console.error(error));
-      
+
   };
 
   // Function handler to monitor the new changes in the inputs
@@ -50,7 +50,7 @@ const EditProductForm = (props) => {
 
   return (
     <div>
-      <hr />
+      
       <h3>Edit the Product</h3>
       <form onSubmit={handleFormSubmit}>
               <div>
