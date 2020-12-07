@@ -1,0 +1,24 @@
+body{
+    height:900px
+}
+
+.products-card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: blueviolet solid 2px;
+    padding:0px;
+    width:200px;
+    margin-bottom:50px
+}
+
+.btn-all{
+    border-radius: 10px;
+    border-color: darkturquoise;
+    padding: 10px;
+}
+
+.price-input{
+    width:30px
+}
+

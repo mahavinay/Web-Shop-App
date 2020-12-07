@@ -31,65 +31,78 @@ const AddProductForm = (props) => {
       };
       
     return (
-        <div>
+        <div className="form-data">
             <h2>Add New Product</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="productName">Product Name:</label>
-        <input
-          type="text"
-          name="productName"
-          value={formState.productName}
-          onChange={handleInputChange}
-          placeholder="Enter the product name"
-        />
+            <form onSubmit={handleFormSubmit}>
+              <div>
+                <label htmlFor="productName"><b>Product Name:</b></label>
+                <input
+                  type="text"
+                  name="productName"
+                  value={formState.productName}
+                  onChange={handleInputChange}
+                  placeholder="Enter the product name"
+                />
+              </div>
 
-        <label htmlFor="size">Size:</label>
-        <select id="select" name="size" value={formState.size} onChange={handleInputChange}>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
-        </select>
-        
-        <label htmlFor="color">Color:</label>
-        <select id="select" name="color" value={formState.color} onChange={handleInputChange}>
-            <option value="red">Red</option>
-            <option value="blue">Blue</option>
-            <option value="white">White</option>
-            <option value="black">Black</option>
-            <option value="orange">Orange</option>
-            <option value="grey">Grey</option>
-        </select>
+              <div>
+                <label htmlFor="size">Size:</label>
+                <select id="select" name="size" value={formState.size} onChange={handleInputChange}>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select>
+              </div>
 
-        <label htmlFor="Price">Price:</label>
-        <input
-          type="number"
-          name="price"
-          value={formState.price}
-          onChange={handleInputChange}
-          placeholder="Enter the product name"
-        />
+              <div>
+                <label htmlFor="color">Color:</label>
+                <select id="select" name="color" value={formState.color} onChange={handleInputChange}>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="orange">Orange</option>
+                    <option value="grey">Grey</option>
+                </select>
+              </div>
 
-        <label htmlFor="category">Category:</label>
-        <select id="select" name="category" value={formState.category} onChange={handleInputChange}>
-            <option value="Clothes">Clothes</option>
-            <option value="Furniture">Furniture</option>
-        </select>
+              <div>
+                <label htmlFor="Price">Price:</label>
+                <input className="price-input"
+                  type="number"
+                  name="price"
+                  value={formState.price}
+                  onChange={handleInputChange}
+                />
+              </div>
 
-        <label htmlFor="sub-category">Sub-Category:</label>
-        <select id="select" name="subCategory" value={formState.category} onChange={handleInputChange}>
-            <option value="Kids">Kids</option>
-            <option value="Women">Women</option>
-            <option value="Men">Men</option>
-        </select>
+              <div>
+                <label htmlFor="category">Category:</label>
+                <select id="select" name="category" value={formState.category} onChange={handleInputChange}>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Furniture">Furniture</option>
+                </select>
+              </div>
 
-          <button type="submit">
-            Submit
-          </button>
-    
-      </form>
+              <div>
+                <label htmlFor="sub-category">Sub-Category:</label>
+                <select id="select" name="subCategory" value={formState.category} onChange={handleInputChange}>
+                    <option value="Kids">Kids</option>
+                    <option value="Women">Women</option>
+                    <option value="Men">Men</option>
+                </select>
+              </div>
+
+              <div>
+                <button className="btn-all" type="submit">
+                  Submit
+                </button>
+              </div>
+          
+            </form>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 import AuthService from "../../services/auth-service";
@@ -27,35 +27,37 @@ const Navbar = (props) => {
 
   if (loggedInUser) {
     return (
-      <nav className="nav-style-loggedin">
+      <nav >
         <span>Welcome, {loggedInUser.username}!</span>
         <ul>
            <li>
-            <Link to="/">
+            <NavLink to="/" activeStyle={{color: "blue"}} exact>
               <button onClick={logoutUser}>Logout</button>
-            </Link>
+            </NavLink>
+            <NavLink to="/products" activeStyle={{color: "blue"}} exact>
+              <button>List Of Products</button>
+            </NavLink>
           </li>
         </ul>
       </nav>
     );
   } else {
     return (
-      <div>
-        <nav className="nav-style">
-          <ul>
-            <li>
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link to="/signup" style={{ textDecoration: "none" }}>
-                Signup
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      
+      <div className="nav-style">
+          <h1 style={{color: "blue"}}>Welcome to Webshop ! Happy Selling your products!</h1>
+          <div>
+          <NavLink to="/login" activeStyle={{ color: "blue" }} exact>
+           <b>Login</b>
+          </NavLink>
+          </div>
+          <div>
+          <NavLink to="/signup" activeStyle={{ color: "blue" }} exact>
+          <b>Signup</b>
+          </NavLink>            
+          </div>
+            <br/>
+      </div>      
     );
   }
 };

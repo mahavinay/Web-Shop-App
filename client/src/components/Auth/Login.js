@@ -39,12 +39,11 @@ const Login = (props) => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2><b>Login</b></h2>
       <form onSubmit={handleFormSubmit}>
       <div className="control">
-        <label className="label">Username:</label>
+        <label className="label"><b>Username:</b></label>
         <input
-          className="input input is-small"
           type="text"
           name="username"
           value={loginState.username}
@@ -53,33 +52,44 @@ const Login = (props) => {
         />
         </div>
 
+        <div>
         <label>
-        Email
+        <b>Email</b>
         </label>
         <input type="email"
         name="email"
         value={loginState.email}
         onChange={handleChange}
+        placeholder="Enter valid email address"
         />
+        </div>
 
-        <label>Password:</label>
+        <div>
+        <label><b>Password:</b></label>
         <input
           type="password"
           name="password"
           value={loginState.password}
           onChange={handleChange}
+          placeholder="Enter password"
         />
-       
-        <input type="submit" value="Login" />
+       </div>
+
+       <div>
+         <input type="submit" value="Login" />
+       </div>
+        
       </form>
       <br />
 
+      <div>
       {loginErrorMsg && <span style={{ color: "red" }}>{loginErrorMsg}</span>}
+      </div>
 
-      <p>
+      <div>
         Don't have account?
-        <Link to={"/signup"}> Signup</Link>
-      </p>
+        <Link to={"/signup"}><b>  Signup</b></Link>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,8 @@ import Login from "./components/Auth/Login";
 import AuthService from "./services/auth-service";
 import Navbar from './components/Navbar/Navbar'
 import ProductList from './components/Products/ProductList'
+import ProductDetails from './components/Products/ProductDetails'
+import Notfound from './components/Notfound'
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -39,12 +41,22 @@ function App() {
   return (
     <section className="App">
         <h1>Welcome User {loggedInUser.username}</h1>
-        <Switch>
-          <Route path="/products"
-         component ={ProductList}/>
+        <Route
+        exact
+        path="/login"
+        render={() => <Login getUser={getLoggedInUser} />}
+      />
 
-         
-        </Switch>
+        <Switch>
+          <Route exact path="/products"
+          component ={ProductList}/>
+          <Route 
+          getUser={loggedInUser}
+          exact path="/products/:id"
+          component ={ProductDetails}
+          />
+          <Route component={Notfound}/> 
+       </Switch>
     </section>
   );
   } else {

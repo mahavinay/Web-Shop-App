@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../../services/auth-service";
+import './signup.css';
 
 const initialState = { username: "", password: "", email: "" };
 
@@ -39,44 +40,63 @@ const Signup = (props) => {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={regForm.username}
+    <div className="form-data">
+      
+        <h2><b>Register Here!</b></h2>
+        <br/>
+        <form onSubmit={handleFormSubmit}>
+        <div>
+          <label><b>Username:</b></label>
+          <input
+            type="text"
+            name="username"
+            value={regForm.username}
+            onChange={handleChange}
+            placeholder="Enter user name"
+          />
+        </div>
+
+        <br/>
+
+        <div>
+          <label><b>Email: </b></label>
+          <input type="email"
+          name="email"
+          value={regForm.email}
           onChange={handleChange}
-        />
+          placeholder="Enter valid email address"
+          />
+        </div>
+        
+        <br/>
 
-        <label>
-        Email
-        </label>
-        <input type="email"
-        name="email"
-        value={regForm.email}
-        onChange={handleChange}
-        />
-
-        <label>Password:</label>
+        <div>
+        <label><b>Password: </b></label>
         <input
           type="password"
           name="password"
           value={regForm.password}
           onChange={handleChange}
+          placeholder="Enter password"
         />
+        </div>
 
+        <br/>
+
+        <div>
         <input type="submit" value="Signup" />
+        </div>
       </form>
       <br />
 
+      <div>
       {regErrorMsg && <span style={{ color: "red" }}>{regErrorMsg}</span>}
-
-      <p>
+      </div>
+      <br/>
+      <div>
         Already have account?
-        <Link to={"/"}> Login</Link>
-      </p>
+        <Link to={"/"}><b>  Login</b></Link>
+      </div>
     </div>
   );
 };
