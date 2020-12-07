@@ -22,27 +22,18 @@ const ProductList = () => {
       .catch((error) => console.error(error));  
     }
 
-  /*  const sortAllProducts = () => {
-    const service = new ProductService();
-    service
-    .sortProduct()
-    .then((responseFromApi) => {
-      setListOfProducts(responseFromApi.data);
-    })
-    .catch((error) => console.error(error)); 
-   } */
-    
     const sortAllProductByColor = () => {
-      
-     const sortedByColor = listOfProducts.sort((a, b) => {
+      const allProducts = [...listOfProducts]
+      allProducts.sort((a, b) => {
        return a.color.localeCompare(b.color)
       })
-      console.log(sortedByColor)
-      setSortedProducts(sortedByColor)
+    
+      setListOfProducts(allProducts)
     }
 
     const sortAllProductByPrice = () => {
-      listOfProducts.sort((a, b) => {
+      const allProducts = [...listOfProducts]
+      allProducts.sort((a, b) => {
         if (a.price > b.price){
           return -1
       } 
@@ -52,10 +43,10 @@ const ProductList = () => {
       return 0
       })
       console.log(listOfProducts);
-      setSortedProducts(listOfProducts)
+      setListOfProducts(allProducts)
     }
 
-    const renderProducts = () => listOfProducts.map((product) => {
+   /*  const renderProducts = () => listOfProducts.map((product) => {
       return (
         <div key={product._id} className="products-card">
           <div>
@@ -71,9 +62,9 @@ const ProductList = () => {
 
         </div>
       );
-    })
+    }) */
 
-    const renderSortedProducts = () => sortedProducts.map((product) => {
+   /*  const renderSortedProducts = () => sortedProducts.map((product) => {
       return (
         <div key={product._id} className="products-card">
           <div>
@@ -89,7 +80,7 @@ const ProductList = () => {
 
         </div>
       );
-    })
+    }) */
 
     useEffect(getAllProducts, []);
   
@@ -97,21 +88,36 @@ const ProductList = () => {
 
     return(
         <div>
-      <div style={{ width: "60%", float: "left" , height: "500px"}}>
-        <h2>List of Products</h2>
-        <button onClick={()=>sortAllProductByColor()}>Sort By Color</button>
-        <br/>
-        <button onClick={()=>sortAllProductByPrice()}>Sort By Price</button>
-        {listOfProducts
-          ? renderProducts()
-          : renderSortedProducts()}
-          
+        <div style={{ width: "60%", float: "left" , height: "500px"}}>
+          <h2>List of Products</h2>
+          <button onClick={()=>sortAllProductByColor()}>Sort By Color</button>
+          <br/>
+          <button onClick={()=>sortAllProductByPrice()}>Sort By Price</button>
+        
+          {listOfProducts ? listOfProducts.map((item) => {
+                return (
+                <div key={item._id} className="products-card">
+                  <div>
+                    <Link to={`/products/${item._id}`}>
+                    <h3>{item.productName}</h3>
+                    </Link>
+                    <p>Size:{item.size} </p>
+                    <p>Color: {item.color}</p>
+                    <p>Price: {item.price} euros</p>
+                    <p>Category: {item.category}</p>
+                    <p>Sub-Category: {item.subCategory}</p>
+                  </div>
+                </div>
+                  )
+          })
+          : `Loading...`}
       </div>
+    
       <div style={{ width: "40%", float: "right" }}>
         <AddProductForm getData={getAllProducts} />
       </div>
     </div>
-
+      
     )
 }
 
