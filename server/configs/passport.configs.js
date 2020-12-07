@@ -36,11 +36,7 @@ passport.serializeUser((loggedInUser, cb) => {
           return;
         }
 
-         if (!foundUser.email) {
-          next(null, false, { message: "Incorrect email." });
-          return;
-        } 
-  
+       
         next(null, foundUser);
       });
     })

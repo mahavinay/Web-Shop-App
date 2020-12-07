@@ -1,5 +1,5 @@
 body{
-    height:900px
+    height:900px;
 }
 
 .products-card{
@@ -9,7 +9,8 @@ body{
     border: blueviolet solid 2px;
     padding:0px;
     width:200px;
-    margin-bottom:50px
+    margin-bottom:50px;
+    border-radius: 10px
 }
 
 .btn-all{
@@ -22,3 +23,10 @@ body{
     width:30px
 }
 
+.products-detail{
+     margin: 0 auto;
+    align-content: left;
+    align-items: center;
+    text-justify: newspaper;
+    
+}

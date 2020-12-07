@@ -4,10 +4,9 @@ const router = Router();
 
 const Product = require("../models/product.model");
 
-/* POST - creates a new project */
 router.post("/products", (req, res) => {
   const { productName, size, color,price,category,subcategory } = req.body;
-
+  
   Product.create({
     productName,
     size,
@@ -15,7 +14,7 @@ router.post("/products", (req, res) => {
     price,
     category,
     subcategory,
-   // seller: req.user._id, // Add this after finishing authentication
+   seller: req.user._id, 
   })
     .then((response) => {
       res.status(200).json(response);
@@ -74,11 +73,10 @@ router.put("/products/:id", (req, res) => {
     });
 });
 
-// DELETE route => to delete a specific project
 router.delete("/products/:id", (req, res) => {
   const { id } = req.params;
 
-  // Check if the incoming id is a valid ObjectId type
+ 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;

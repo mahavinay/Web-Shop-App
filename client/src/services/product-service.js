@@ -9,31 +9,31 @@ class ProductService {
     });
   }
 
-  // Create a project
+  
   createProduct = (data) => {
     return this.service
       .post("/products", data)
       .then((response) => response);
   };
 
-  // Method to retrieve all projects
+  
   getProducts = () => {
     return this.service.get("/products").then((response) => response);
   };
 
-  // Method to retrieve a project
+  
   getOneProduct = (id) => {
     return this.service.get(`/products/${id}`).then((response) => response);
   };
 
-  // Method to update a project
+ 
   updateProduct = (id, data) => {
     return this.service
       .put(`products/${id}`, data)
       .then((response) => response);
   };
 
-  // Method to delete a project
+  
   removeProduct = (id) => {
     return this.service
       .delete(`/products/${id}`)

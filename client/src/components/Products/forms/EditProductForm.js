@@ -1,39 +1,58 @@
 import React, { useState } from "react";
+
 import ProductService from "../../../services/product-service";
 
-const initialState = { productName: "", size: "", color: "", price:0, category:"", subCategory:""};
+const EditProductForm = (props) => {
+  const [formState, setFormState] = useState({
+    productName: props.theProduct.productName,
+    size: props.theProduct.description,
+    color: props.theProduct.color,
+    price: props.theProduct.price,
+    category: props.theProduct.category,
+    subCategory: props.theProduct.subCategory
 
-const AddProductForm = (props) => {
-    const [formState, setFormState] = useState(initialState);
+  });
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({ ...formState, [name]: value });
-      };
+  // Function handler to submit form
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
-      const handleFormSubmit = (event) => {
-        // Prevent default form action
-        event.preventDefault();
-    
-        // Extract values to use with axios call
-        const { productName, size, color, price, category,subCategory} = formState;
-    
-        const service = new ProductService();
-    
-        // Make api call to the backend to save form data
-        service
-          .createProduct({ productName, size, color, price, category, subCategory})
-          .then(() => {
-            props.getData();
-            setFormState(initialState);
-          })
-          .catch((error) => console.error(error));
-      };
+    // form state data to pass with the api call
+    const { productName, size, color, price, category, subCategory } = formState;
+
+    const service = new ProductService();
+
+    service
+      .updateProduct(props.theProduct._id, {
+        productName,
+        size,
+        color,
+        price,
+        category,
+        subCategory
+      })
+      .then(() => {
+        // run method to call api method to get a single project
+        props.getTheProduct();
+      })
+      .catch((error) => console.error(error));
       
-    return (
-        <div className="form-data">
-            <h2>Add New Product</h2>
-            <form onSubmit={handleFormSubmit}>
+  };
+
+  // Function handler to monitor the new changes in the inputs
+  const handleInputChange = (event) => {
+    // Data from the input field
+    const { name, value } = event.target;
+
+    // Set new form data
+    setFormState({ ...formState, [name]: value });
+  };
+
+  return (
+    <div>
+      <hr />
+      <h3>Edit the Product</h3>
+      <form onSubmit={handleFormSubmit}>
               <div>
                 <label htmlFor="productName"><b>Product Name:</b></label>
                 <input
@@ -100,11 +119,11 @@ const AddProductForm = (props) => {
                 <button className="btn-all" type="submit">
                   Submit
                 </button>
-              </div>
+                </div>
           
-            </form>
-        </div>
-    )
-}
+          </form>
+    </div>
+  );
+};
 
-export default AddProductForm
+export default EditProductForm;

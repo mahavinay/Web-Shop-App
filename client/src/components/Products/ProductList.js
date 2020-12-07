@@ -9,6 +9,7 @@ import './productList.css'
 
 const ProductList = () => {
     const [listOfProducts, setListOfProducts] = useState([]);
+    const [sortedProducts, setSortedProducts] = useState([]);
 
     const getAllProducts = () => {  
         const service = new ProductService();
@@ -21,7 +22,7 @@ const ProductList = () => {
       .catch((error) => console.error(error));  
     }
 
-   const sortAllProducts = () => {
+  /*  const sortAllProducts = () => {
     const service = new ProductService();
     service
     .sortProduct()
@@ -29,16 +30,18 @@ const ProductList = () => {
       setListOfProducts(responseFromApi.data);
     })
     .catch((error) => console.error(error)); 
-   }
+   } */
     
-  /*   const sortAllProductByColor = () => {
+    const sortAllProductByColor = () => {
       
-      listOfProducts.sort((a, b) => a.color.localeCompare(b.color))
-      console.log(listOfProducts);
-      setListOfProducts(listOfProducts)
-    } */
+     const sortedByColor = listOfProducts.sort((a, b) => {
+       return a.color.localeCompare(b.color)
+      })
+      console.log(sortedByColor)
+      setSortedProducts(sortedByColor)
+    }
 
-/*     const sortAllProductByPrice = () => {
+    const sortAllProductByPrice = () => {
       listOfProducts.sort((a, b) => {
         if (a.price > b.price){
           return -1
@@ -49,39 +52,59 @@ const ProductList = () => {
       return 0
       })
       console.log(listOfProducts);
-      setListOfProducts(listOfProducts)
-    } */
+      setSortedProducts(listOfProducts)
+    }
+
+    const renderProducts = () => listOfProducts.map((product) => {
+      return (
+        <div key={product._id} className="products-card">
+          <div>
+            <Link to={`/products/${product._id}`}>
+              <h3>{product.productName}</h3>
+            </Link>
+            <p>Size:{product.size} </p>
+            <p>Color: {product.color}</p>
+            <p>Price: {product.price} euros</p>
+            <p>Category: {product.category}</p>
+            <p>Sub-Category: {product.subCategory}</p>
+          </div>
+
+        </div>
+      );
+    })
+
+    const renderSortedProducts = () => sortedProducts.map((product) => {
+      return (
+        <div key={product._id} className="products-card">
+          <div>
+            <Link to={`/products/${product._id}`}>
+              <h3>{product.productName}</h3>
+            </Link>
+            <p>Size:{product.size} </p>
+            <p>Color: {product.color}</p>
+            <p>Price: {product.price} euros</p>
+            <p>Category: {product.category}</p>
+            <p>Sub-Category: {product.subCategory}</p>
+          </div>
+
+        </div>
+      );
+    })
 
     useEffect(getAllProducts, []);
-    
+  
   
 
     return(
         <div>
-      <div style={{ width: "60%", float: "left" }}>
+      <div style={{ width: "60%", float: "left" , height: "500px"}}>
         <h2>List of Products</h2>
-        <button onClick={()=>sortAllProducts()}>Sort By Color</button>
+        <button onClick={()=>sortAllProductByColor()}>Sort By Color</button>
         <br/>
-        {/* <button onClick={()=>sortAllProductByPrice()}>Sort By Price</button> */}
+        <button onClick={()=>sortAllProductByPrice()}>Sort By Price</button>
         {listOfProducts
-          ? listOfProducts.map((product) => {
-              return (
-                <div key={product._id} className="products-card">
-                  <div>
-                    <Link to={`/products/${product._id}`}>
-                      <h3>{product.productName}</h3>
-                    </Link>
-                    <p>Size:{product.size} </p>
-                    <p>Color: {product.color}</p>
-                    <p>Price: {product.price} euros</p>
-                    <p>Category: {product.category}</p>
-                    <p>Sub-Category: {product.subCategory}</p>
-                  </div>
-
-                </div>
-              );
-            })
-          : `Loading...`}
+          ? renderProducts()
+          : renderSortedProducts()}
           
       </div>
       <div style={{ width: "40%", float: "right" }}>

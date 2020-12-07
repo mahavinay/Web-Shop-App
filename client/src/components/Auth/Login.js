@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import AuthService from "../../services/auth-service";
 
-const initialState = { username: "", password: "", email: "" };
+const initialState = { username: "", password: ""};
 
 const Login = (props) => {
   const [loginState, setLoginState] = useState(initialState);
@@ -16,19 +16,21 @@ const Login = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    const { username, password, email } = loginState;
+    const { username, password} = loginState;
 
     service
-      .login(username, password, email)
+      .login(username, password)
       .then((response) => {
         setLoginState(initialState);
         props.getUser(response);
+        
       })
       .catch((error) => {
         const { message } = error.response.data;
         setLoginErrorMsg(message);
-        //console.log(error);
+        
       });
+
   };
 
   // Function to handle changes in the input fields
@@ -49,18 +51,6 @@ const Login = (props) => {
           value={loginState.username}
           onChange={handleChange}
           placeholder="Enter user name"
-        />
-        </div>
-
-        <div>
-        <label>
-        <b>Email</b>
-        </label>
-        <input type="email"
-        name="email"
-        value={loginState.email}
-        onChange={handleChange}
-        placeholder="Enter valid email address"
         />
         </div>
 

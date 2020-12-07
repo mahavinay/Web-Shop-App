@@ -16,9 +16,9 @@ class AuthService {
   };
 
   // Method to use in our Login component
-  login = (username, password, email) => {
+  login = (username, password) => {
     return this.service
-      .post("/login", { username, password, email })
+      .post("/login", { username, password})
       .then((response) => response.data);
   };
 

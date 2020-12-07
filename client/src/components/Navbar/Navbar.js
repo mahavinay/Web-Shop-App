@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 
 import AuthService from "../../services/auth-service";
@@ -28,8 +28,7 @@ const Navbar = (props) => {
   if (loggedInUser) {
     return (
       <nav >
-        <span>Welcome, {loggedInUser.username}!</span>
-        <ul>
+         <ul>
            <li>
             <NavLink to="/" activeStyle={{color: "blue"}} exact>
               <button onClick={logoutUser}>Logout</button>
@@ -37,6 +36,7 @@ const Navbar = (props) => {
             <NavLink to="/products" activeStyle={{color: "blue"}} exact>
               <button>List Of Products</button>
             </NavLink>
+            
           </li>
         </ul>
       </nav>

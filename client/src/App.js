@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
-import {Switch, Route} from 'react-router-dom' 
+import {Switch, Route, Redirect} from 'react-router-dom' 
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import AuthService from "./services/auth-service";
@@ -34,27 +34,23 @@ function App() {
   };
 
   // Run to check if user is authenticated
-  fetchUser();
-  
+  fetchUser();  
   if (loggedInUser) {
-    console.log(loggedInUser);
+    
   return (
     <section className="App">
         <h1>Welcome User {loggedInUser.username}</h1>
-        <Route
-        exact
-        path="/login"
-        render={() => <Login getUser={getLoggedInUser} />}
-      />
-
-        <Switch>
-          <Route exact path="/products"
-          component ={ProductList}/>
-          <Route 
+        <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
+        <Route 
           getUser={loggedInUser}
           exact path="/products/:id"
           component ={ProductDetails}
           />
+        <Switch>
+          <Route exact path="/products"
+          component ={ProductList}/>
+          
+          <Route path="/login" component={() =>(<Redirect to="/products"/>)}/>
           <Route component={Notfound}/> 
        </Switch>
     </section>
