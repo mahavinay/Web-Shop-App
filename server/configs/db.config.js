@@ -1,17 +1,22 @@
 const mongoose = require("mongoose");
 
-mongoose
-  .connect("mongodb://localhost/web-shop", {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
-  .then((x) => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
-  })
-  .catch((err) => {
-    console.error("Error connecting to mongo", err);
-  });
+const { MONGO_ATLAS, MONGO_LOCAL, NODE_ENV } = process.env;
+
+const connectDb = (mongoUri) =>
+  mongoose
+    .connect(mongoUri, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    })
+    .then((x) => {
+      console.log(
+        `Connected to Mongo! Database name: "${x.connections[0].name}"`
+      );
+    })
+    .catch((err) => {
+      console.error("Error connecting to mongo", err);
+    });
+
+  NODE_ENV === "development" ? connectDb(MONGO_LOCAL) : connectDb(MONGO_ATLAS);

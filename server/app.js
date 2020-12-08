@@ -55,16 +55,19 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
-// default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
-
-
 
 app.use("/api", require("./routes/index"));
 app.use("/api", require("./routes/auth.routes"));
 app.use("/api", require("./routes/product.routes"));
+
+if(process.env.NODE_ENV==="production") {
+  app.use(express.static("client/build"));
+
+  app.get("*", (req,res) => {
+    res.sendFile(path.join(__dirname + "../client", "build", "index.html"))
+  });
+}
 
 
 module.exports = app;

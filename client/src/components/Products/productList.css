@@ -9,7 +9,7 @@ body{
     flex-wrap: wrap;
     border: blueviolet solid 2px;
     padding:0px;
-    width:200px;
+    width:250px;
     margin-bottom:50px;
     border-radius: 10px
 }
@@ -30,4 +30,8 @@ body{
     align-items: center;
     text-justify: newspaper;
     
+}
+
+.btn-sort{
+    margin: 10px
 }

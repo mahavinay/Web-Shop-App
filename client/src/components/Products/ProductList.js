@@ -9,8 +9,7 @@ import './productList.css'
 
 const ProductList = () => {
     const [listOfProducts, setListOfProducts] = useState([]);
-    const [sortedProducts, setSortedProducts] = useState([]);
-
+    
     const getAllProducts = () => {  
         const service = new ProductService();
 
@@ -42,47 +41,11 @@ const ProductList = () => {
       }
       return 0
       })
-      console.log(listOfProducts);
+      
       setListOfProducts(allProducts)
     }
 
-   /*  const renderProducts = () => listOfProducts.map((product) => {
-      return (
-        <div key={product._id} className="products-card">
-          <div>
-            <Link to={`/products/${product._id}`}>
-              <h3>{product.productName}</h3>
-            </Link>
-            <p>Size:{product.size} </p>
-            <p>Color: {product.color}</p>
-            <p>Price: {product.price} euros</p>
-            <p>Category: {product.category}</p>
-            <p>Sub-Category: {product.subCategory}</p>
-          </div>
-
-        </div>
-      );
-    }) */
-
-   /*  const renderSortedProducts = () => sortedProducts.map((product) => {
-      return (
-        <div key={product._id} className="products-card">
-          <div>
-            <Link to={`/products/${product._id}`}>
-              <h3>{product.productName}</h3>
-            </Link>
-            <p>Size:{product.size} </p>
-            <p>Color: {product.color}</p>
-            <p>Price: {product.price} euros</p>
-            <p>Category: {product.category}</p>
-            <p>Sub-Category: {product.subCategory}</p>
-          </div>
-
-        </div>
-      );
-    }) */
-
-    useEffect(getAllProducts, []);
+     useEffect(getAllProducts, []);
   
   
 
@@ -90,10 +53,12 @@ const ProductList = () => {
         <div>
         <div style={{ width: "60%", float: "left" , height: "500px"}}>
           <h2>List of Products</h2>
-          <button onClick={()=>sortAllProductByColor()}>Sort By Color</button>
+          <span><button className="btn-all btn-sort"  onClick={()=>sortAllProductByColor()}>Sort By Color</button>
+         
+          <button className="btn-all" onClick={()=>sortAllProductByPrice()}>Sort By Price</button></span>
+
           <br/>
-          <button onClick={()=>sortAllProductByPrice()}>Sort By Price</button>
-        
+          <br/>
           {listOfProducts ? listOfProducts.map((item) => {
                 return (
                 <div key={item._id} className="products-card">

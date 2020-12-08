@@ -35,12 +35,15 @@ function App() {
   };
 
   // Run to check if user is authenticated
+  console.log(fetchUser());
+  
   fetchUser();  
+
   if (loggedInUser) {
     
   return (
     <section className="App">
-        <h1 className="welcome">Welcome User {loggedInUser.username}</h1>
+        <h1 className="welcome">Welcome {loggedInUser.username}</h1>
         <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
         <Switch>
           <ProtectedRoute 
@@ -48,8 +51,7 @@ function App() {
             exact path="/products/:id"
             component ={ProductDetails}
             />
-        
-            
+               
             <ProtectedRoute exact path="/products"
             user={loggedInUser}
             component ={ProductList}/>

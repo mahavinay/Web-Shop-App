@@ -1,0 +1,25 @@
+{
+  "name": "web-shop-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm instal --prefix server",
+    "init-server" : "node server/bin/www",
+    "start" : "npm run install-server && npm run init-server",
+    "build-client": "npm run buil --prefix client",
+    "install-client": "npm install --prefix client",
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build-client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahavinay/Web-Shop-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahavinay/Web-Shop-App/issues"
+  },
+  "homepage": "https://github.com/mahavinay/Web-Shop-App#readme"
+}

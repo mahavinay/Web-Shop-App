@@ -30,13 +30,13 @@ const Navbar = (props) => {
     return (
       <nav >
             <div className="logout-btn">
+            <NavLink to="/products" activeStyle={{color: "blue"}} exact>
+              <button className="btn-all">List Of Products</button>
+            </NavLink>
             <NavLink to="/" activeStyle={{color: "blue"}} exact>
               <button className="btn-all" onClick={logoutUser}>Logout</button>
             </NavLink>
             </div>
-            <NavLink to="/products" activeStyle={{color: "blue"}} exact>
-              <button className="btn-all">List Of Products</button>
-            </NavLink>
       </nav>
     );
   } else {
