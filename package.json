@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "npm instal --prefix server",
+    "install-server": "npm install --prefix server",
     "init-server" : "node server/bin/www",
     "start" : "npm run install-server && npm run init-server",
     "build-client": "npm run buil --prefix client",
