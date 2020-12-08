@@ -55,7 +55,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Web shop App';
 
 app.use("/api", require("./routes/index"));
 app.use("/api", require("./routes/auth.routes"));
