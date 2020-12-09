@@ -15,8 +15,7 @@ function App() {
 
   const service = new AuthService();
 
-  // Function to help fetch a logged in user
-  const fetchUser = () => {
+    const fetchUser = () => {
     if (loggedInUser === null) {
       service
         .isAuthenticated()
