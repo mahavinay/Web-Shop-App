@@ -34,8 +34,7 @@ function App() {
   };
 
   // Run to check if user is authenticated
-  console.log(fetchUser());
-
+  
   fetchUser();  
 
   if (loggedInUser) {

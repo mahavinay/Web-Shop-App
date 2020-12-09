@@ -12,41 +12,41 @@ class ProductService {
   
   createProduct = (data) => {
     return this.service
-      .post("/products", data)
+      .post("/api/products", data)
       .then((response) => response);
   };
 
   
   getProducts = () => {
-    return this.service.get("/products").then((response) => response);
+    return this.service.get("/api/products").then((response) => response);
   };
 
   
   getOneProduct = (id) => {
-    return this.service.get(`/products/${id}`).then((response) => response);
+    return this.service.get(`/api/products/${id}`).then((response) => response);
   };
 
  
   updateProduct = (id, data) => {
     return this.service
-      .put(`products/${id}`, data)
+      .put(`/api/products/${id}`, data)
       .then((response) => response);
   };
 
   
   removeProduct = (id) => {
     return this.service
-      .delete(`/products/${id}`)
+      .delete(`/api/products/${id}`)
       .then((response) => response);
   };
 
-  sortProduct= () => {
+ /*  sortProduct= () => {
     return this.service
-    .post("/products").then((response) => 
+    .post("/api/products").then((response) => 
     
     response.sort((a, b) => a.color.localeCompare(b.color))
     )
-  }
+  } */
 }
 
 export default ProductService;
