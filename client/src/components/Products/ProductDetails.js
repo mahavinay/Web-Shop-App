@@ -55,8 +55,7 @@ const ProductDetails = (props) => {
   
   const ownershipCheck = (product) => {
     if (props.loggedInUser && product.seller === props.loggedInUser._id) {
-      console.log("Maha");
-      return (
+            return (
         <div>
           <div style={{width:"50%", float: "left"}}>{renderEditForm()} </div>
           <br/>

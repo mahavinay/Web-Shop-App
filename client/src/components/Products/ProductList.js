@@ -5,6 +5,7 @@ import AddProductForm from "./forms/AddProductForm";
 
 import ProductService from "../../services/product-service";
 import './productList.css'
+import ProductSearch from "../Products/ProductSearch"
 
 
 const ProductList = () => {
@@ -33,10 +34,10 @@ const ProductList = () => {
     const sortAllProductByPrice = () => {
       const allProducts = [...listOfProducts]
       allProducts.sort((a, b) => {
-        if (a.price > b.price){
+        if (b.price > a.price){
           return -1
       } 
-      if (a.price < b.price){
+      if (b.price < a.price){
          return 1
       }
       return 0
@@ -56,9 +57,10 @@ const ProductList = () => {
           <span><button className="btn-all btn-sort"  onClick={()=>sortAllProductByColor()}>Sort By Color</button>
          
           <button className="btn-all" onClick={()=>sortAllProductByPrice()}>Sort By Price</button></span>
+          <ProductSearch />
+          <br/>
+          <br/>
 
-          <br/>
-          <br/>
           {listOfProducts ? listOfProducts.map((item) => {
                 return (
                 <div key={item._id} className="products-card">

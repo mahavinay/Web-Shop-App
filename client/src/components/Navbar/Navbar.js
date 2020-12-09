@@ -43,19 +43,25 @@ const Navbar = (props) => {
     return (
       
       <div className="nav-style">
-          <h1 style={{color: "blue"}}>Welcome to Webshop ! Happy Selling your products!</h1>
+          <div >
+            <h1 className="welcome-mess">Welcome to Webshop ! Happy Selling your products!</h1>
+          </div>
+                 
           <div>
-          <NavLink to="/login" activeStyle={{ color: "blue" }} exact>
-           <b>Login</b>
-          </NavLink>
+            <NavLink to="/login" activeStyle={{ color: "blue" }} exact>
+            <b>Login</b>
+            </NavLink>
           </div>
           <div>
-          <NavLink to="/signup" activeStyle={{ color: "blue" }} exact>
-          <b>Signup</b>
-          </NavLink>            
+            <NavLink to="/signup" activeStyle={{ color: "blue" }} exact>
+            <b>Signup</b>
+            </NavLink>            
           </div>
-            <br/>
+          <footer>Contact</footer>
+        
+            
       </div>      
+      
     );
   }
 };

@@ -23,7 +23,7 @@ const Signup = (props) => {
       .then((response) => {
        
         setRegForm(initialState);
-        console.log(props);
+        
         props.getUser(response);
         
       })

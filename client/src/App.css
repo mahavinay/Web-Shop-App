@@ -24,6 +24,20 @@
   color: white;
 }
 
+.offer{
+  color: aqua;
+  border : chocolate solid 2px;
+  border-radius: 250px;
+  background-color: cornflowerblue;
+  width:150px;
+  padding: 10px;
+}
+
+.deals{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .App-link {
   color: #61dafb;
 }
