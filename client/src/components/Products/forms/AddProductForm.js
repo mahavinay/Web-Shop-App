@@ -57,7 +57,7 @@ const AddProductForm = (props) => {
             <h2>Add New Product</h2>
             <form onSubmit={handleFormSubmit}>
               <div>
-                <label htmlFor="productName"><b>Product Name:</b></label>
+                <label htmlFor="productName"><b>Brand:</b></label>
                 <input
                   type="text"
                   name="productName"

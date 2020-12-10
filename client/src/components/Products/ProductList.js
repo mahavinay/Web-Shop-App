@@ -74,7 +74,7 @@ const ProductList = () => {
             {filter.length > 0 ? filter.map((item) => {
                   return (
                   <div key={item._id} className="products-card">
-                    <div>
+                    
                       <Link to={`/products/${item._id}`}>
                       <h3>{item.productName}</h3>
                       </Link>
@@ -83,11 +83,11 @@ const ProductList = () => {
                       <p>Price: {item.price} euros</p>
                       <p>Category: {item.category}</p>
                       <p>Sub-Category: {item.subCategory}</p>
-                      <p>Display Picture: {item.imageUrl}</p>
+                      <p>Display Picture:</p>
                       <img src={item.imageUrl} alt="product_image"/>
                       <br/>
                       <br/>
-                    </div>
+                    
                   </div>
                     )
             })
