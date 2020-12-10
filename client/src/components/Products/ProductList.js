@@ -63,7 +63,7 @@ const ProductList = () => {
     return(
         <div>
           <div style={{ width: "60%", float: "left" , height: "500px"}}>
-            <h2>List of Products</h2>
+            
             <span><button className="btn-all btn-sort"  onClick={()=>sortAllProductByColor()}>Sort By Color</button>
           
             <button className="btn-all" onClick={()=>sortAllProductByPrice()}>Sort By Price</button></span>

@@ -12,7 +12,7 @@ function ProductSearch(props) {
 
       return (
         <div>
-            <span><h1>Search</h1>
+            <span>
             <input
                 name="search"
                 type="text"

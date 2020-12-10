@@ -64,9 +64,10 @@ const Login = (props) => {
           placeholder="Enter password"
         />
        </div>
-
+      
+      <br/>
        <div>
-         <input type="submit" value="Login" />
+         <input type="submit" value="Login" style={{backgroundColor:"cyan"}}/>
        </div>
         
       </form>

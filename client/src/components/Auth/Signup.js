@@ -11,30 +11,24 @@ const Signup = (props) => {
 
   const service = new AuthService();
 
-  // Form submission handler
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
     const { username, password, email } = regForm;
 
-    // Use the service.signup method to make a call to the back end and sign the user up
-    service
+     service
       .signup(username, password, email)
       .then((response) => {
-       
         setRegForm(initialState);
-        
         props.getUser(response);
         
       })
       .catch((error) => {
         const { message } = error.response.data;
         setRegErrorMsg(message);
-              });
+      });
   };
 
-  // Change handler
-  const handleChange = (event) => {
+    const handleChange = (event) => {
     const { name, value } = event.target;
     setRegForm({ ...regForm, [name]: value });
   };
@@ -42,7 +36,7 @@ const Signup = (props) => {
   return (
     <div className="form-data">
       
-        <h2><b>Register Here!</b></h2>
+        <h3><b>Register Here!</b></h3>
         <br/>
         <form onSubmit={handleFormSubmit}>
         <div>

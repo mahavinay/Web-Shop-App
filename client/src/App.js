@@ -41,7 +41,7 @@ function App() {
     
   return (
     <section className="App">
-        <h1 className="welcome">Welcome {loggedInUser.username}</h1>
+        <h1 className="welcome" style={{color:"cornflowerblue"}}>Welcome {loggedInUser.username}!</h1>
         <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
         <Switch>
           <ProtectedRoute 

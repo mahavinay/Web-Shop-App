@@ -3,57 +3,49 @@ import { NavLink} from "react-router-dom";
 import './Navbar.css'
 import image from '../../assets/ChristmasSale.png'
 import image2 from '../../assets/kidscollection.png'
+import image3 from '../../assets/kidssale.png'
 import Carousel from 'react-bootstrap/Carousel'
-import { Button } from 'react-bootstrap';
-
 import AuthService from "../../services/auth-service";
 
 const Navbar = (props) => {
   const [loggedInUser, setLoggedInUser] = useState(null);
-
   const service = new AuthService();
 
-  // Mimic lifecycle method when a component updates
   useEffect(() => {
     setLoggedInUser(props.userInSession);
   }, [props.userInSession]);
 
-  // function to log user out
   const logoutUser = () => {
     service.logout().then(() => {
-      // reset state value
       setLoggedInUser(null);
-
-      // reset getUser value
       props.getUser(null);
     });
   };
 
   if (loggedInUser) {
     return (
-      <nav >
+      <div className="log_list">
             <div className="logout-btn">
-            <NavLink to="/products" activeStyle={{color: "blue"}} exact>
-            <button className="btn-all">List Of Products</button>
-
-            </NavLink>
-            <NavLink to="/" activeStyle={{color: "blue"}} exact>
-
-            {/* <Button onClick={logoutUser}>Logout</Button> */}
-              <button className="btn-all" onClick={logoutUser}>Logout</button>
-            </NavLink>
+              <NavLink to="/products" activeStyle={{color: "blue"}} exact>
+              <button className="btn-all">List Of Products</button>
+              </NavLink>
             </div>
-      </nav>
+            
+            <div>
+              <NavLink to="/" activeStyle={{color: "blue"}} exact>    
+              <button className="btn-all" onClick={logoutUser}>Logout</button>
+              </NavLink>
+            </div>
+      </div>
     );
   } else {
     return (
       
       <div >
-          <div className="nav-style">
-              <div>
-                <h1 className="welcome-mess">Welcome to Webshop ! Happy Selling your products!</h1>
-              </div>
-                    
+        <div className="nav-style"> 
+        <div>
+            <h2 className="welcome-mess">Welcome! Happy Selling your products!</h2>
+          </div>             
               <div>
                 <NavLink to="/login" activeStyle={{ color: "blue" }} exact>
                 <b>Login</b>
@@ -65,7 +57,7 @@ const Navbar = (props) => {
                 <b>Signup</b>
                 </NavLink>     
               </div>
-          </div>
+          </div>                
 
             <div className="deals">
               <div className="offer">
@@ -81,32 +73,27 @@ const Navbar = (props) => {
                     className="d-block w-100"
                     src={image}
                     alt="First slide"
-                  />
-               
+                  />               
                 </Carousel.Item>
+
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
                     src={image2}
-                    alt="Third slide"
+                    alt="Second slide"
                   />
-
                 </Carousel.Item>
+
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src={image2}
+                    src={image3}
                     alt="Third slide"
                   />
-
-                
                 </Carousel.Item>
+
               </Carousel>
-
             </div>
-           
-            
-
       </div>      
       
     );
