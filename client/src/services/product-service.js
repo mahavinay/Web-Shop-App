@@ -39,14 +39,6 @@ class ProductService {
       .delete(`/api/products/${id}`)
       .then((response) => response);
   };
-
- /*  sortProduct= () => {
-    return this.service
-    .post("/api/products").then((response) => 
-    
-    response.sort((a, b) => a.color.localeCompare(b.color))
-    )
-  } */
 }
 
 export default ProductService;

@@ -64,12 +64,7 @@ function App() {
       <section className="App">
         
       <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
-      <div className="deals">
-      <div className="offer">
-        <h2>Christmas Offers 25% on all shirts</h2>
-      </div>
-      <div className="offer"><h2>Tommy Hilfiger 30-50%</h2></div>
-      </div>
+      
     <Switch>
     <Route
         exact

@@ -3,6 +3,7 @@ import { NavLink} from "react-router-dom";
 import './Navbar.css'
 
 
+
 import AuthService from "../../services/auth-service";
 
 const Navbar = (props) => {
@@ -42,24 +43,64 @@ const Navbar = (props) => {
   } else {
     return (
       
-      <div className="nav-style">
-          <div >
-            <h1 className="welcome-mess">Welcome to Webshop ! Happy Selling your products!</h1>
-          </div>
-                 
-          <div>
-            <NavLink to="/login" activeStyle={{ color: "blue" }} exact>
-            <b>Login</b>
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to="/signup" activeStyle={{ color: "blue" }} exact>
-            <b>Signup</b>
-            </NavLink>            
-          </div>
-          <footer>Contact</footer>
-        
+      <div >
+          <div className="nav-style">
+              <div>
+                <h1 className="welcome-mess">Welcome to Webshop ! Happy Selling your products!</h1>
+              </div>
+                    
+              <div>
+                <NavLink to="/login" activeStyle={{ color: "blue" }} exact>
+                <b>Login</b>
+                </NavLink>
+              </div>
+
+              <div>
+                <NavLink to="/signup" activeStyle={{ color: "blue" }} exact>
+                <b>Signup</b>
+                </NavLink>     
+              </div>
+            </div>
             
+            <div className="deals">
+              <div className="offer">
+                <h2>Christmas Offers 25% on all shirts</h2>
+              </div>
+              <div className="offer"><h2>Tommy Hilfiger 30-50%</h2></div>
+            </div>
+            
+            <div className="caral">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="../../assets/Christmas Sale.png" class="d-block w-100" alt="chirstmassaleimage"/>
+                </div>
+                <div class="carousel-item">
+                  <img src="../../assets/ethnic.png" class="d-block w-100" alt="..."/>
+                </div>
+                <div class="carousel-item">
+                  <img src="../../asssets/kidscollection.png" class="d-block w-100" alt="..."/>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+
+            </div>
+           
+            
+
       </div>      
       
     );

@@ -48,6 +48,7 @@ const AddProductForm = (props) => {
               <div>
                 <label htmlFor="size">Size:</label>
                 <select id="select" name="size" value={formState.size} onChange={handleInputChange}>
+                    <option value="SELECT">Select</option>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
@@ -60,6 +61,7 @@ const AddProductForm = (props) => {
               <div>
                 <label htmlFor="color">Color:</label>
                 <select id="select" name="color" value={formState.color} onChange={handleInputChange}>
+                   <option value="SELECT">Select</option>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
                     <option value="white">White</option>
@@ -82,6 +84,7 @@ const AddProductForm = (props) => {
               <div>
                 <label htmlFor="category">Category:</label>
                 <select id="select" name="category" value={formState.category} onChange={handleInputChange}>
+                    <option value="SELECT">Select</option>
                     <option value="Clothes">Clothes</option>
                     <option value="Furniture">Furniture</option>
                 </select>
@@ -89,7 +92,8 @@ const AddProductForm = (props) => {
 
               <div>
                 <label htmlFor="sub-category">Sub-Category:</label>
-                <select id="select" name="subCategory" value={formState.category} onChange={handleInputChange}>
+                <select id="select" name="subCategory" value={formState.subCategory} onChange={handleInputChange}>
+                    <option value="SELECT">Select</option>
                     <option value="Kids">Kids</option>
                     <option value="Women">Women</option>
                     <option value="Men">Men</option>

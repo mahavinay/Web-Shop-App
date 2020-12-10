@@ -10,6 +10,7 @@ import ProductSearch from "../Products/ProductSearch"
 
 const ProductList = () => {
     const [listOfProducts, setListOfProducts] = useState([]);
+    const [filter, setfilter]=useState([])
     
     const getAllProducts = () => {  
         const service = new ProductService();
@@ -46,43 +47,67 @@ const ProductList = () => {
       setListOfProducts(allProducts)
     }
 
+    const handleFilterProducts = (searchString) => {
+      const stateCopy= [...listOfProducts]
+      const filteredProductList = stateCopy.filter((eachProduct) =>
+      eachProduct.productName.toLowerCase().includes(searchString.toLowerCase())
+    );
+    setfilter(filteredProductList)
+    
+    }
+
      useEffect(getAllProducts, []);
   
   
 
     return(
         <div>
-        <div style={{ width: "60%", float: "left" , height: "500px"}}>
-          <h2>List of Products</h2>
-          <span><button className="btn-all btn-sort"  onClick={()=>sortAllProductByColor()}>Sort By Color</button>
-         
-          <button className="btn-all" onClick={()=>sortAllProductByPrice()}>Sort By Price</button></span>
-          <ProductSearch />
-          <br/>
-          <br/>
+          <div style={{ width: "60%", float: "left" , height: "500px"}}>
+            <h2>List of Products</h2>
+            <span><button className="btn-all btn-sort"  onClick={()=>sortAllProductByColor()}>Sort By Color</button>
+          
+            <button className="btn-all" onClick={()=>sortAllProductByPrice()}>Sort By Price</button></span>
+            <ProductSearch handleFilterSearch={handleFilterProducts}/>
+            <br/>
+            <br/>
 
-          {listOfProducts ? listOfProducts.map((item) => {
-                return (
-                <div key={item._id} className="products-card">
-                  <div>
-                    <Link to={`/products/${item._id}`}>
-                    <h3>{item.productName}</h3>
-                    </Link>
-                    <p>Size:{item.size} </p>
-                    <p>Color: {item.color}</p>
-                    <p>Price: {item.price} euros</p>
-                    <p>Category: {item.category}</p>
-                    <p>Sub-Category: {item.subCategory}</p>
+            {filter.length > 0 ? filter.map((item) => {
+                  return (
+                  <div key={item._id} className="products-card">
+                    <div>
+                      <Link to={`/products/${item._id}`}>
+                      <h3>{item.productName}</h3>
+                      </Link>
+                      <p>Size:{item.size} </p>
+                      <p>Color: {item.color}</p>
+                      <p>Price: {item.price} euros</p>
+                      <p>Category: {item.category}</p>
+                      <p>Sub-Category: {item.subCategory}</p>
+                    </div>
                   </div>
+                    )
+            })
+            : listOfProducts.map((item) => {
+              return (
+              <div key={item._id} className="products-card">
+                <div>
+                  <Link to={`/products/${item._id}`}>
+                  <h3>{item.productName}</h3>
+                  </Link>
+                  <p>Size:{item.size} </p>
+                  <p>Color: {item.color}</p>
+                  <p>Price: {item.price} euros</p>
+                  <p>Category: {item.category}</p>
+                  <p>Sub-Category: {item.subCategory}</p>
                 </div>
-                  )
-          })
-          : `Loading...`}
-      </div>
-    
-      <div style={{ width: "40%", float: "right" }}>
-        <AddProductForm getData={getAllProducts} />
-      </div>
+              </div>
+                )
+              })}
+        </div>
+      
+        <div style={{ width: "40%", float: "right" }}>
+          <AddProductForm getData={getAllProducts} />
+        </div>
     </div>
       
     )

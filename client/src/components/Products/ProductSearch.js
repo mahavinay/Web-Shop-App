@@ -1,25 +1,25 @@
-import React, {useState} from 'react'
+import React from 'react'
 
+
+ 
 function ProductSearch(props) {
+    
+   const handleSearchInput = (event) =>{
+        let searchString =event.target.value;
+       
+         props.handleFilterSearch(searchString) 
+    }  
 
-    const [prodSearch, setProdSearch]=useState("")
-
-    const handleSearchHandler = (event) =>{
-        event.preventDefault();
-        let inputValue = event.target.value;
-        
-    }
-    return (
+      return (
         <div>
-            <form onChange={handleSearchHandler}>
-            <input 
-            name="search"
-            type="text"
-            placeholder="Enter what you want to search for"
-            
-            value={prodSearch}
-            />
-            </form>
+            <span><h1>Search</h1>
+            <input
+                name="search"
+                type="text"
+                placeholder="Search your product..."
+              onChange={handleSearchInput} 
+
+                /></span>
         </div>
     )
 }

@@ -13,12 +13,10 @@ const EditProductForm = (props) => {
 
   });
 
-  // Function handler to submit form
-  const handleFormSubmit = (event) => {
+    const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    // form state data to pass with the api call
-    const { productName, size, color, price, category, subCategory } = formState;
+      const { productName, size, color, price, category, subCategory } = formState;
 
     const service = new ProductService();
 
@@ -67,6 +65,7 @@ const EditProductForm = (props) => {
               <div>
                 <label htmlFor="size">Size:</label>
                 <select id="select" name="size" value={formState.size} onChange={handleInputChange}>
+                    <option value="SELECT">Select</option>
                     <option value="XS">XS</option>
                     <option value="S">S</option>
                     <option value="M">M</option>
@@ -79,6 +78,7 @@ const EditProductForm = (props) => {
               <div>
                 <label htmlFor="color">Color:</label>
                 <select id="select" name="color" value={formState.color} onChange={handleInputChange}>
+                    <option value="SELECT">Select</option>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
                     <option value="white">White</option>
@@ -101,6 +101,7 @@ const EditProductForm = (props) => {
               <div>
                 <label htmlFor="category">Category:</label>
                 <select id="select" name="category" value={formState.category} onChange={handleInputChange}>
+                    <option value="SELECT">Select</option>
                     <option value="Clothes">Clothes</option>
                     <option value="Furniture">Furniture</option>
                 </select>
