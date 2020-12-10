@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import ProductService from "../../../services/product-service";
+import UploadService from "../../../services/upload-service";
 
 const EditProductForm = (props) => {
   const [formState, setFormState] = useState({
@@ -9,14 +10,34 @@ const EditProductForm = (props) => {
     color: props.theProduct.color,
     price: props.theProduct.price,
     category: props.theProduct.category,
-    subCategory: props.theProduct.subCategory
+    subCategory: props.theProduct.subCategory,
+    imageUrl:props.theProduct.imageUrl
 
   });
+
+  const service = new UploadService();
+
+  const handleFileUpload = (event) => {
+    // Creates a new FormData object that will take the file upload data
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", event.target.files[0]);
+
+    // upload the data to cloudinary
+    service
+      .upload(uploadData)
+      .then((response) => {
+        // The response from uploading to cloudinary is the url which will be saved in the database.
+        setFormState({ ...formState, imageUrl: response.cloudinaryUrl });
+      })
+      .catch((err) => {
+        console.log("Error while uploading the file: ", err);
+      });
+    };
 
     const handleFormSubmit = (event) => {
     event.preventDefault();
 
-      const { productName, size, color, price, category, subCategory } = formState;
+      const { productName, size, color, price, category, subCategory, imageUrl} = formState;
 
     const service = new ProductService();
 
@@ -27,7 +48,8 @@ const EditProductForm = (props) => {
         color,
         price,
         category,
-        subCategory
+        subCategory,
+        imageUrl
       })
       .then(() => {
         // run method to call api method to get a single project
@@ -116,11 +138,18 @@ const EditProductForm = (props) => {
                 </select>
               </div>
 
-              <div>
-                <button className="btn-all" type="submit">
+              
+              <label htmlFor="imageUrl">Display Picture</label>
+              <input type="file" name="imageUrl" onChange={handleFileUpload} />
+
+              
+              {formState.imageUrl ? (
+                <button type="submit">Submit</button>
+              ) : (
+                <button disabled type="submit">
                   Submit
                 </button>
-                </div>
+              )}
           
           </form>
     </div>

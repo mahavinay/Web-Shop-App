@@ -70,7 +70,7 @@ const ProductList = () => {
             <ProductSearch handleFilterSearch={handleFilterProducts}/>
             <br/>
             <br/>
-
+            <div className="display-prod">
             {filter.length > 0 ? filter.map((item) => {
                   return (
                   <div key={item._id} className="products-card">
@@ -83,6 +83,10 @@ const ProductList = () => {
                       <p>Price: {item.price} euros</p>
                       <p>Category: {item.category}</p>
                       <p>Sub-Category: {item.subCategory}</p>
+                      <p>Display Picture: {item.imageUrl}</p>
+                      <img src={item.imageUrl} alt="product_image"/>
+                      <br/>
+                      <br/>
                     </div>
                   </div>
                     )
@@ -90,7 +94,7 @@ const ProductList = () => {
             : listOfProducts.map((item) => {
               return (
               <div key={item._id} className="products-card">
-                <div>
+              
                   <Link to={`/products/${item._id}`}>
                   <h3>{item.productName}</h3>
                   </Link>
@@ -99,12 +103,14 @@ const ProductList = () => {
                   <p>Price: {item.price} euros</p>
                   <p>Category: {item.category}</p>
                   <p>Sub-Category: {item.subCategory}</p>
-                </div>
+                  <p>Display Picture:</p>
+                  <img src={item.imageUrl} alt="product_image"/>
+               
               </div>
                 )
               })}
         </div>
-      
+        </div>
         <div style={{ width: "40%", float: "right" }}>
           <AddProductForm getData={getAllProducts} />
         </div>

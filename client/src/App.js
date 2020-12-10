@@ -62,32 +62,35 @@ function App() {
   } else {
     return (
       <section className="App">
-        
-      <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
-      
-    <Switch>
-    <Route
-        exact
-        path="/signup"
-        render={() => <Signup getUser={getLoggedInUser} />}
-      />
-     <Route
-        exact
-        path="/login"
-        render={() => <Login getUser={getLoggedInUser} />}
-      />
+        <div style={{width:"80%", float:"left"}}>
+          <Navbar userInSession={loggedInUser} getUser={getLoggedInUser} />
+        </div>
+        <div style={{width:"20%", float:"right"}}>
+          <Switch>
+            <Route
+                exact
+                path="/signup"
+                render={() => <Signup getUser={getLoggedInUser} />}
+              />
+            <Route
+                exact
+                path="/login"
+                render={() => <Login getUser={getLoggedInUser} />}
+              />
 
-      <ProtectedRoute 
-        user={loggedInUser}
-        exact path="/products/:id"
-        component ={ProductDetails}
-        />
-           
-        <ProtectedRoute exact path="/products"
-        user={loggedInUser}
-        component ={ProductList}/>
+              <ProtectedRoute 
+                user={loggedInUser}
+                exact path="/products/:id"
+                component ={ProductDetails}
+                />
+                  
+              <ProtectedRoute exact path="/products"
+              user={loggedInUser}
+              component ={ProductList}/>
 
-    </Switch>  
+          </Switch> 
+        </div>
+     
   </section>
     )
   }

@@ -9,7 +9,7 @@ body{
     flex-wrap: wrap;
     border: blueviolet solid 2px;
     padding:0px;
-    width:250px;
+    width:350px;
     margin-bottom:50px;
     border-radius: 10px
 }
@@ -34,4 +34,16 @@ body{
 
 .btn-sort{
     margin: 10px
+}
+
+.products-card > img{
+    max-width:100%;
+    height:auto;
+
+}
+
+.display-prod{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

@@ -80,6 +80,8 @@ const ProductDetails = (props) => {
             <p><b>Price:</b> {details.price}</p>
             <p><b>Category:</b>{details.category}</p>
             <p><b>SubCategory:</b> {details.subCategory}</p>
+            <p><b>Display Picture:</b> </p>
+            <img src={details.imageUrl} alt="product_image"/>
             <br />
             <div>{ownershipCheck(details)}</div>
             <br/>

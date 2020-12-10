@@ -5,7 +5,7 @@ const router = Router();
 const Product = require("../models/product.model");
 
 router.post("/products", (req, res) => {
-  const { productName, size, color,price,category,subCategory } = req.body;
+  const { productName, size, color,price,category,subCategory,imageUrl } = req.body;
   
   Product.create({
     productName,
@@ -14,6 +14,7 @@ router.post("/products", (req, res) => {
     price,
     category,
     subCategory,
+    imageUrl,
    seller: req.user._id, 
   })
     .then((response) => {

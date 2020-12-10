@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { NavLink} from "react-router-dom";
 import './Navbar.css'
-
-
+import image from '../../assets/ChristmasSale.png'
+import image2 from '../../assets/kidscollection.png'
+import Carousel from 'react-bootstrap/Carousel'
+import { Button } from 'react-bootstrap';
 
 import AuthService from "../../services/auth-service";
 
@@ -32,9 +34,12 @@ const Navbar = (props) => {
       <nav >
             <div className="logout-btn">
             <NavLink to="/products" activeStyle={{color: "blue"}} exact>
-              <button className="btn-all">List Of Products</button>
+            <button className="btn-all">List Of Products</button>
+
             </NavLink>
             <NavLink to="/" activeStyle={{color: "blue"}} exact>
+
+            {/* <Button onClick={logoutUser}>Logout</Button> */}
               <button className="btn-all" onClick={logoutUser}>Logout</button>
             </NavLink>
             </div>
@@ -60,42 +65,43 @@ const Navbar = (props) => {
                 <b>Signup</b>
                 </NavLink>     
               </div>
-            </div>
-            
+          </div>
+
             <div className="deals">
               <div className="offer">
-                <h2>Christmas Offers 25% on all shirts</h2>
+                  <h3>Christmas Offers 25% on all shirts</h3>
               </div>
-              <div className="offer"><h2>Tommy Hilfiger 30-50%</h2></div>
+              <div className="offer"><h3>Tommy Hilfiger 30-50%</h3></div>
             </div>
             
-            <div className="caral">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="../../assets/Christmas Sale.png" class="d-block w-100" alt="chirstmassaleimage"/>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../assets/ethnic.png" class="d-block w-100" alt="..."/>
-                </div>
-                <div class="carousel-item">
-                  <img src="../../asssets/kidscollection.png" class="d-block w-100" alt="..."/>
-                </div>
-              </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </a>
-            </div>
+            <div className="my__carousel_main">
+              <Carousel>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={image}
+                    alt="First slide"
+                  />
+               
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={image2}
+                    alt="Third slide"
+                  />
+
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={image2}
+                    alt="Third slide"
+                  />
+
+                
+                </Carousel.Item>
+              </Carousel>
 
             </div>
            
