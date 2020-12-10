@@ -1,6 +1,6 @@
 body{
-    height:900px;
-    width:1200px;
+    height:1200px;
+    width:1400px;
 }
 
 .products-card{
@@ -11,7 +11,8 @@ body{
     padding:0px;
     width:350px;
     margin-bottom:50px;
-    border-radius: 10px
+    border-radius: 10px;
+    margin-right:10px
 }
 
 .btn-all{
@@ -20,17 +21,19 @@ body{
     padding: 10px;
 }
 
+.btn-all:hover{
+    background-color: slateblue;
+}
 .price-input{
-    width:30px
+    width:80px
 }
 
 .products-detail{
-     margin: 0 auto;
+    margin: 0 auto;
     align-content: left;
     align-items: center;
     text-justify: newspaper;
-    
-}
+    }
 
 .btn-sort{
     margin: 10px
@@ -39,11 +42,26 @@ body{
 .products-card > img{
     max-width:100%;
     height:auto;
-
-}
+   }
 
 .display-prod{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.form-data{
+    display: flex;
+    flex-direction: column;
+    border: lightseagreen solid 2px;
+    padding: 20px;
+    margin: 20px;   
+    border-radius: 15%;
+    background-color: palegreen;
+    }
+
+div.display-prod {
+    background-color: lightblue;
+    height: 900px;
+    overflow-y: scroll;
+  }

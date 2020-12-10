@@ -35,7 +35,6 @@ passport.serializeUser((loggedInUser, cb) => {
           next(null, false, { message: "Incorrect password." });
           return;
         }
-
        
         next(null, foundUser);
       });

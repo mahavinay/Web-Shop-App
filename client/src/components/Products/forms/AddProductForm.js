@@ -9,17 +9,14 @@ const AddProductForm = (props) => {
 
     const service = new UploadService();
     
-     // Function to uploading a file
+
   const handleFileUpload = (event) => {
-    // Creates a new FormData object that will take the file upload data
     const uploadData = new FormData();
     uploadData.append("imageUrl", event.target.files[0]);
 
-    // upload the data to cloudinary
     service
       .upload(uploadData)
       .then((response) => {
-        // The response from uploading to cloudinary is the url which will be saved in the database.
         setFormState({ ...formState, imageUrl: response.cloudinaryUrl });
       })
       .catch((err) => {
@@ -33,15 +30,12 @@ const AddProductForm = (props) => {
       };
 
       const handleFormSubmit = (event) => {
-        // Prevent default form action
         event.preventDefault();
     
-        // Extract values to use with axios call
         const { productName, size, color, price, category,subCategory,imageUrl} = formState;
     
         const service = new ProductService();
     
-        // Make api call to the backend to save form data
         service
           .createProduct({ productName, size, color, price, category, subCategory,imageUrl})
           .then(() => {
@@ -54,7 +48,7 @@ const AddProductForm = (props) => {
       
     return (
         <div className="form-data">
-            <h2>Add New Product</h2>
+            <h4>Add New Product</h4>
             <form onSubmit={handleFormSubmit}>
               <div>
                 <label htmlFor="productName"><b>Brand:</b></label>
@@ -68,7 +62,7 @@ const AddProductForm = (props) => {
               </div>
 
               <div>
-                <label htmlFor="size">Size:</label>
+                <label htmlFor="size"><b>Size:</b></label>
                 <select id="select" name="size" value={formState.size} onChange={handleInputChange}>
                     <option value="SELECT">Select</option>
                     <option value="XS">XS</option>
@@ -81,7 +75,7 @@ const AddProductForm = (props) => {
               </div>
 
               <div>
-                <label htmlFor="color">Color:</label>
+                <label htmlFor="color"><b>Color:</b></label>
                 <select id="select" name="color" value={formState.color} onChange={handleInputChange}>
                    <option value="SELECT">Select</option>
                     <option value="red">Red</option>
@@ -94,7 +88,7 @@ const AddProductForm = (props) => {
               </div>
 
               <div>
-                <label htmlFor="Price">Price:</label>
+                <label htmlFor="Price"><b>Price:</b></label>
                 <input className="price-input"
                   type="number"
                   name="price"
@@ -104,7 +98,7 @@ const AddProductForm = (props) => {
               </div>
 
               <div>
-                <label htmlFor="category">Category:</label>
+                <label htmlFor="category"><b>Category:</b></label>
                 <select id="select" name="category" value={formState.category} onChange={handleInputChange}>
                     <option value="SELECT">Select</option>
                     <option value="Clothes">Clothes</option>
@@ -113,7 +107,7 @@ const AddProductForm = (props) => {
               </div>
 
               <div>
-                <label htmlFor="sub-category">Sub-Category:</label>
+                <label htmlFor="sub-category"><b>Sub-Category:</b></label>
                 <select id="select" name="subCategory" value={formState.subCategory} onChange={handleInputChange}>
                     <option value="SELECT">Select</option>
                     <option value="Kids">Kids</option>
@@ -122,14 +116,14 @@ const AddProductForm = (props) => {
                 </select>
               </div>
 
-              <label htmlFor="imageUrl">Display Picture</label>
+              <label htmlFor="imageUrl"><b>Display Picture</b></label>
               <input type="file" name="imageUrl" onChange={handleFileUpload} />
 
               
               {formState.imageUrl ? (
-                <button type="submit">Submit</button>
+                <button className="btn-all" type="submit">Submit</button>
               ) : (
-                <button disabled type="submit">
+                <button disabled className="btn-all" type="submit">
                   Submit
                 </button>
               )}

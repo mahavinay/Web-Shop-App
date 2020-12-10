@@ -11,11 +11,10 @@ body{
 }
 
 .my__carousel_main > div > ol > li{
-    
-                background-color: red;
-                border-radius: 50%;
-                height: 10px;
-                width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
             
 }
 
@@ -44,11 +43,10 @@ body{
   }
 
   .log_list{
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
-
   
   .nav-style{
     display: flex;

@@ -24,14 +24,7 @@
   color: white;
 }
 
-.offer{
-  color: aqua;
-  border : chocolate solid 2px;
-  border-radius: 250px;
-  background-color: cornflowerblue;
-  width:150px;
-  padding: 10px;
-}
+
 
 .deals{
   display: flex;
@@ -41,6 +34,21 @@
 .App-link {
   color: #61dafb;
 }
+
+.welcome_user{
+
+    width: 1400px;
+    height: 50px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 4s;
+  }
+  
+  @keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  }
+
 
 @keyframes App-logo-spin {
   from {

@@ -19,22 +19,18 @@ const ProductDetails = (props) => {
     }
     
     useEffect(individualProduct, [props.match.params]);
-    
  
   const renderEditForm = () => {
- 
-    if (!details.productName) {
-  
-      individualProduct();
+     if (!details.productName) {
+       individualProduct();
     } else {
-     
-      return (
-        <EditProductForm
-          theProduct={details}
-          getTheProduct={individualProduct}
-          {...props}
-        />
-      );
+        return (
+          <EditProductForm
+            theProduct={details}
+            getTheProduct={individualProduct}
+            {...props}
+          />
+        );
     }
   };
 
@@ -47,7 +43,6 @@ const ProductDetails = (props) => {
     service
       .removeProduct(id)
       .then(() => {
-   
         props.history.push("/products");
       })
       .catch((error) => console.error(error));
@@ -55,33 +50,32 @@ const ProductDetails = (props) => {
   
   const ownershipCheck = (product) => {
     if (props.loggedInUser && product.seller === props.loggedInUser._id) {
-            return (
-        <div>
-          <div style={{width:"50%", float: "left"}}>{renderEditForm()} </div>
+      return (
+      <div>
+        <div style={{width:"50%", float: "left"}}>{renderEditForm()} </div>
           <br/>
           <div style={{width:"50%", float:"right"}}>
           <button className="btn-all" onClick={() => deleteProduct(details._id)}>
             Delete product
           </button>
           <br/>
-          
-          </div>
         </div>
+      </div>
       );
     }
   };
 
     return (
         <div className="products-detail">
-         <h1>Product Details of {details.productName}</h1>
+         <h4>Product Details of {details.productName}</h4>
          <div>
+            <img src={details.imageUrl} alt="product_image"/>
             <p><b>Size:</b> {details.size}</p>
             <p><b>Color:</b> {details.color}</p>
             <p><b>Price:</b> {details.price}</p>
             <p><b>Category:</b>{details.category}</p>
             <p><b>SubCategory:</b> {details.subCategory}</p>
-            <p><b>Display Picture:</b> </p>
-            <img src={details.imageUrl} alt="product_image"/>
+            
             <br />
             <div>{ownershipCheck(details)}</div>
             <br/>

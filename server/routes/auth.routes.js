@@ -50,7 +50,6 @@ router.post("/signup", (req,res) =>{
             password: hashPass,
           });
           aNewUser.save((err) => {
-            // When/If any issues arise while saving the user to the database
             if (err) {
               res
                 .status(400)
@@ -58,8 +57,6 @@ router.post("/signup", (req,res) =>{
               return;
             }
       
-            // Automatically log in user after sign up
-            // .login() here is actually predefined passport method
             req.login(aNewUser, (err) => {
               if (err) {
                 res.status(500).json({ message: "Login after signup went bad." });

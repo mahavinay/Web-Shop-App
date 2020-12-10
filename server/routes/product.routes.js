@@ -15,7 +15,7 @@ router.post("/products", (req, res) => {
     category,
     subCategory,
     imageUrl,
-   seller: req.user._id, 
+    seller: req.user._id, 
   })
     .then((response) => {
       res.status(200).json(response);
@@ -38,14 +38,13 @@ router.get("/products", (req, res) => {
 
 router.get("/products/:id", (req, res) => {
   const { id } = req.params;
-
  
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
-      Product.findById(id)
+  Product.findById(id)
      .then((product) => {
       res.status(200).json(product);
     })
@@ -57,7 +56,6 @@ router.get("/products/:id", (req, res) => {
 router.put("/products/:id", (req, res) => {
   const { id } = req.params;
 
-  // Check if the incoming id is a valid ObjectId type
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
@@ -76,7 +74,6 @@ router.put("/products/:id", (req, res) => {
 
 router.delete("/products/:id", (req, res) => {
   const { id } = req.params;
-
  
   if (!mongoose.Types.ObjectId.isValid(id)) {
     res.status(400).json({ message: "Specified id is not valid" });

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import ProductService from "../../../services/product-service";
 import UploadService from "../../../services/upload-service";
 
@@ -18,16 +17,13 @@ const EditProductForm = (props) => {
   const service = new UploadService();
 
   const handleFileUpload = (event) => {
-    // Creates a new FormData object that will take the file upload data
     const uploadData = new FormData();
     uploadData.append("imageUrl", event.target.files[0]);
 
-    // upload the data to cloudinary
-    service
+     service
       .upload(uploadData)
       .then((response) => {
-        // The response from uploading to cloudinary is the url which will be saved in the database.
-        setFormState({ ...formState, imageUrl: response.cloudinaryUrl });
+         setFormState({ ...formState, imageUrl: response.cloudinaryUrl });
       })
       .catch((err) => {
         console.log("Error while uploading the file: ", err);
@@ -52,24 +48,20 @@ const EditProductForm = (props) => {
         imageUrl
       })
       .then(() => {
-        // run method to call api method to get a single project
-        props.getTheProduct();
+         props.getTheProduct();
       })
       .catch((error) => console.error(error));
 
   };
 
-  // Function handler to monitor the new changes in the inputs
-  const handleInputChange = (event) => {
-    // Data from the input field
-    const { name, value } = event.target;
+   const handleInputChange = (event) => {
+     const { name, value } = event.target;
 
-    // Set new form data
     setFormState({ ...formState, [name]: value });
   };
 
   return (
-    <div>
+    <div className="form-data">
       
       <h3>Edit the Product</h3>
       <form onSubmit={handleFormSubmit}>
@@ -144,10 +136,10 @@ const EditProductForm = (props) => {
 
               
               {formState.imageUrl ? (
-                <button type="submit">Submit</button>
+                <button className="btn-all" type="submit"><b>Submit</b></button>
               ) : (
-                <button disabled type="submit">
-                  Submit
+                <button disabled type="submit" className="btn-all">
+                  <b>Submit</b>
                 </button>
               )}
           
