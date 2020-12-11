@@ -62,8 +62,7 @@ const Login = (props) => {
         </div>
         
       </form>
-      <br />
-
+      
       <div>
       {loginErrorMsg && <span style={{ color: "red" }}>{loginErrorMsg}</span>}
       </div>
